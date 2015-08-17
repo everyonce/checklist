@@ -46,7 +46,7 @@ public class ChecklistItemController{
 	}
 	
 	@RequestMapping(value={"/post", "/post/"}, method=RequestMethod.POST)
-	public @ResponseBody ChecklistItem createChecklist(@ModelAttribute(value="checklistItem") ChecklistItem checklistItem){
+	public @ResponseBody ChecklistItem createChecklist(@RequestBody ChecklistItem checklistItem){
 		checklistItem.setLastModified(new Date());
 		checklistItemService.saveChecklist(checklistItem);
 		
