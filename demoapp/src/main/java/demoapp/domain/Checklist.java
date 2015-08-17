@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "Checklist")
 public class Checklist implements Serializable{
@@ -57,7 +59,8 @@ public class Checklist implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date getLastModified() {
 		return lastModified;
 	}

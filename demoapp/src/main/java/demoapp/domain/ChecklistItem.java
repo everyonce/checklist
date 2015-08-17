@@ -12,6 +12,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="checklistItem")
 public class ChecklistItem implements Serializable{
@@ -59,11 +61,12 @@ public class ChecklistItem implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date getLastModified() {
 		return lastModified;
 	}
-
+	
 	public void setLastModified(Date lastModified) {
 		this.lastModified = lastModified;
 	}
@@ -75,7 +78,8 @@ public class ChecklistItem implements Serializable{
 	public void setChecklistId(Integer checklistId) {
 		this.checklistId = checklistId;
 	}
-
+	
+	@JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 	public Date getCompleted() {
 		return completed;
 	}
