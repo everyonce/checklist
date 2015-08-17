@@ -23,7 +23,7 @@ public class ChecklistItemController{
 	@Inject
 	private ChecklistItemService checklistItemService;
 	
-	@RequestMapping(value={"/delete/{id}", "/delete/{id}/"}, method=RequestMethod.DELETE)
+	@RequestMapping(value={"/{id}", "/{id}/"}, method=RequestMethod.DELETE)
 	public @ResponseBody boolean deleteChecklist(@PathVariable int id){
 		return checklistItemService.deleteChecklist(id);
 	}
@@ -44,7 +44,7 @@ public class ChecklistItemController{
 		return checklistItemService.getAllChecklistItems();
 	}
 	
-	@RequestMapping(value={"/post", "/post/"}, method=RequestMethod.POST)
+	@RequestMapping(value={"/", ""}, method=RequestMethod.POST)
 	public @ResponseBody ChecklistItem createChecklist(@RequestBody ChecklistItem checklistItem){
 		checklistItem.setLastModified(new Date());
 		checklistItemService.saveChecklist(checklistItem);
@@ -52,7 +52,7 @@ public class ChecklistItemController{
 		return checklistItem;
 	}
 	
-	@RequestMapping(value={"/put/{id}", "/put/{id}/"}, method=RequestMethod.PUT)
+	@RequestMapping(value={"/{id}", "/{id}/"}, method=RequestMethod.PUT)
 	public @ResponseBody ChecklistItem updateChecklist(@PathVariable int id, @RequestBody ChecklistItem checklistItem){
 		ChecklistItem model = checklistItemService.getChecklistItemById(id);
 		
