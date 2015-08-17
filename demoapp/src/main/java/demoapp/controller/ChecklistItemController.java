@@ -66,6 +66,9 @@ public class ChecklistItemController{
 		if(checklistItem.getName() != null){
 			model.setName(checklistItem.getName());
 		}
+		if(checklistItem.getCompleted() != null){
+			model.setCompleted(checklistItem.getCompleted());
+		}
 		
 		model.setLastModified(new Date());
 		checklistItemService.saveChecklist(model);
