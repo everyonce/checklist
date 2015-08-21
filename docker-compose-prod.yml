@@ -1,0 +1,22 @@
+prodChecklistApi:
+  image: gradle-java8-dn
+  ports:
+   - "8080"
+  volumes:
+   - /home/daniel/checklist-prod/demoapp:/app:rw
+  links:
+   - prodChecklistMysql:mysql
+  command: bootRun
+  environment:
+   - SERVICE_NAME=checklist
+  restart: always
+
+prodChecklistMysql:
+  image: mysql:5.7
+  volumes:
+   - /home/daniel/checklist-prod-data:/var/lib/mysql:rw
+  environment:
+   - SERVICE_IGNORE=yes
+   - MYSQL_DATABASE=demoappdb
+   - MYSQL_ROOT_PASSWORD='Cts!cts@1'
+  restart: always
